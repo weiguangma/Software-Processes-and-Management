@@ -1,0 +1,40 @@
+CREATE DATABASE swen90016;
+
+USE swen90016;
+
+CREATE TABLE swen90016.users (
+    id INT(10) NOT NULL AUTO_INCREMENT,
+    address VARCHAR(100) NOT NULL,
+    email VARCHAR(40) NOT NULL,
+    name VARCHAR(30) NOT NULL,
+    phone VARCHAR(30) NOT NULL,
+    password VARCHAR(80) NOT NULL,
+    type VARCHAR(10) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE swen90016.bookings (
+    id INT(10) NOT NULL AUTO_INCREMENT,
+    customerID INT(10) NOT NULL,
+    boxes INT(10) NOT NULL,
+    destinationAddress VARCHAR(100) NOT NULL,
+    pickupAddress VARCHAR(100) NOT NULL,
+    departureDate DATETIME NOT NULL,
+    arrivalDate DATETIME NOT NULL,
+    customerMessage VARCHAR(200),
+    HBL_Number INT(10) DEFAULT '0',
+    status VARCHAR(100) DEFAULT 'No status',
+    pickupDate DATETIME NULL,
+    shipperMessage VARCHAR(200) DEFAULT 'No message',
+    PRIMARY KEY (id),
+    FOREIGN KEY (customerID) 
+        REFERENCES users(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+
+
+
+
+
